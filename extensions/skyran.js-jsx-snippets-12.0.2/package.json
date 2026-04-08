@@ -1,0 +1,109 @@
+{
+	"name": "js-jsx-snippets",
+	"displayName": "JS JSX Snippets",
+	"description": "Extensions for React, Redux in JS with babel and ES7 syntax",
+	"version": "12.0.2",
+	"publisher": "skyran",
+	"icon": "images/react-logo.png",
+	"galleryBanner": {
+		"theme": "light"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/skyran1278/js-jsx-snippets"
+	},
+	"engines": {
+		"vscode": "^1.63.0"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"activationEvents": [
+		"onLanguage:javascript",
+		"onLanguage:javascriptreact",
+		"onLanguage:typescript",
+		"onLanguage:typescriptreact"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./snippets/javascript-snippets.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/javascript-snippets.json"
+			},
+			{
+				"language": "typescript",
+				"path": "./snippets/typescript-snippets.json"
+			},
+			{
+				"language": "typescriptreact",
+				"path": "./snippets/typescript-snippets.json"
+			}
+		],
+		"configuration": {
+			"title": "JS JSX Snippets",
+			"properties": {
+				"jsJsxSnippets.settings.importReactOnTop": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Controls if snippets should add `import React from 'react';` at the top of components.\nSet false if you have React +17 and use jsx transform."
+				},
+				"jsJsxSnippets.settings.semicolon": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Controls if snippets should add semicolon at the end of the line."
+				},
+				"jsJsxSnippets.settings.typing": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Controls if React components have typescript Props typing."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run build",
+		"build": "node esbuild.mjs && tsc -p ./ && node build/script/generate-all-snippets.js",
+		"watch": "nodemon",
+		"pretest": "npm run build && npm run lint",
+		"lint": "eslint src",
+		"test": "vscode-test",
+		"release": "dotenv release-it --"
+	},
+	"devDependencies": {
+		"@release-it/conventional-changelog": "^10.0.6",
+		"@types/lodash": "^4.17.24",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^24.0.0",
+		"@types/vscode": "^1.63.0",
+		"@typescript-eslint/eslint-plugin": "^8.57.1",
+		"@typescript-eslint/parser": "^8.57.1",
+		"@vscode/test-cli": "^0.0.12",
+		"@vscode/test-electron": "^2.5.2",
+		"dotenv-cli": "^11.0.0",
+		"esbuild": "^0.27.4",
+		"eslint": "^10.1.0",
+		"import-sort-style-module": "^6.0.0",
+		"lodash": "^4.17.23",
+		"nodemon": "^3.1.14",
+		"prettier-plugin-import-sort": "^0.0.7",
+		"release-it": "^19.2.4",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.57.1"
+	},
+	"importSort": {
+		".js, .jsx, .ts, .tsx": {
+			"style": "module",
+			"parser": "typescript"
+		}
+	},
+	"__metadata": {
+		"installedTimestamp": 1775594177747,
+		"targetPlatform": "undefined",
+		"size": 132957
+	}
+}
